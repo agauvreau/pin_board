@@ -1,0 +1,14 @@
+<h1>All the Pins there are to see</h1>
+
+<div class="panel panel-default"> <!-- Pins do block -->
+    <% @pins.each do |pin| %>
+    <li class="list-group-item"> <!-- Listing li block -->
+        <div class"well"> <!-- Pin title and link div block -->
+            <%= link_to pin.title, pin, class:"btn btn-primary" %>
+        </div><!-- Pin title and link div block -->    
+    </li><!-- Listing li block -->
+    <%end%>
+</div><!-- Pins do block -->
+<Div>
+    <%= link_to "New Pin", new_pin_path, class:"btn btn-success" %>
+</Div>

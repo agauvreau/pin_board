@@ -1,0 +1,9 @@
+<h1><%= @pin.title %></h1>
+<p><%= @pin.description %></p>
+
+<div>
+    <%= link_to "Back", root_path, class:"btn btn-primary" %>
+    <%= link_to "Edit", edit_pin_path, class:"btn btn-warning" %>
+    <!--The delete button is specific a bit here it sends the DELETE html method to the pin path -->
+    <%= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure" }, class:"btn btn-danger" %>
+</div>
