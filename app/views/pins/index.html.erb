@@ -1,15 +1,22 @@
 <h1>All the Pins there are to see</h1>
 
-<div class="panel panel-default"> <!-- Pins do block -->
-    <% @pins.each do |pin| %>
-    <li class="list-group-item"> <!-- Listing li block -->
-        <div class="well"> <!-- Pin title and image and link div block -->
-            <%if pin.image.present? %>
-            <%= image_tag pin.image.url(:medium) %>
-            <%else%>
-            <%end%>
-            <%= link_to pin.title, pin, class:"btn btn-primary" %>
-        </div><!-- Pin title and link div block -->    
-    </li><!-- Listing li block -->
-    <%end%>
-</div><!-- Pins do block -->
+<div class="transitions-enabled" id="pins"> <!-- this class and ID are used by the masonry gem -->
+  <% @pins.each do |pin| %>
+    <div class="box panel panel-default"> <!-- pin div block -->
+      <% if pin.image.present? %>
+      <%= link_to (image_tag pin.image.url), pin %>
+      <% else %>
+      <%end%>
+      <h2>
+        <%= link_to pin.title, pin %>
+      </h2>
+      <% if pin.user.present? %>
+      <p class="user">
+        Submitted by <%= pin.user.email %>
+      </p>
+      <%else%>
+      <%end%>
+    </div>  <!-- pin div block -->
+  <% end %>
+</div>
+
