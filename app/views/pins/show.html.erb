@@ -1,27 +1,47 @@
 
-<div class="col-md-6 col-md-offset-3">    
-    <div class="panel panel-default">
-        <div class="well">
-            <h1><%= @pin.title %></h1>
-        </div>
-        <p class="text-center"><strong><%= @pin.description %></strong></p>
+<div class="row" id="pin_show">    
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            
+       
+            <div class="panel-body">
+                <h2><%= @pin.title %></h2>
+                <p><%= @pin.description %></p>
+            </div>
         <!-- this 'if' block is to prevent errors in case the pin has no picture -->
         <% if @pin.image.present? %>
-        <p class="text-center"><%= image_tag @pin.image.url(:medium) %></p>
+        <div class="panel-heading pin_image">
+            <%= image_tag @pin.image.url %>
+        </div>
         <%else%>
         <p>No picture for this pin.</p>
         <%end%>
-        <!-- this 'if' block is only to prevent errors in development, no Pin should be without user in production -->
-        <% if @pin.user_id.present? %>
-        <p class="text-center"><strong>Submited by:</strong> <%= @pin.user.email %></p>
-        <% else %>
-        <p class="text-center">No User Recorded</p>
-        <%end%> <!--end if block -->
-        <div class="text-center">
-            <%= link_to "Back", root_path, class:"btn btn-primary" %>
-            <%= link_to "Edit", edit_pin_path, class:"btn btn-warning" %>
-            <!--The delete button is specific a bit here it sends the DELETE html method to the pin path -->
-            <%= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure" }, class:"btn btn-danger" %>
-        </div>
-    </div>
-</div>
+            <div class="panel-footer">
+                <div class="row">
+                <!-- this 'if' block is only to prevent errors in development, no Pin should be without user in production -->
+                    <% if @pin.user_id.present? %>
+                
+                    <div class="col-md-6">
+                        <p class="user">
+                            Submited by: <%= @pin.user.email %>
+                        </p>
+                    </div>
+                
+                    <% else %>
+                    <p class="text-center">No User Recorded</p>
+                    <%end%> <!--end if block -->
+                    <div class="col-md-6"> <!-- btn group -->
+                        <div class="btn-group pull-right"> <!-- groups the button to the right for improved aesthetic -->
+                            <%= link_to "Back", root_path, class:"btn btn-primary" %>
+                            <% if user_signed_in? %> <!-- Only the pin's user can delete it -->
+                            <%= link_to "Edit", edit_pin_path, class:"btn btn-warning" %>
+                            <!--The delete button is specific a bit here it sends the DELETE html method to the pin path -->
+                            <%= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure" }, class:"btn btn-danger" %>
+                            <%end%>
+                        </div>
+                    </div> <!-- btn group -->
+                </div>  <!-- footer's row -->   
+            </div> <!-- footer -->
+        </div> <!-- panel dflt-->
+    </div> <!-- col-md and offset -->
+</div><!-- row id pin_show -->
