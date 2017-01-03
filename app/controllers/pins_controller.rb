@@ -1,4 +1,5 @@
 class PinsController < ApplicationController
+    before_action :authenticate_user!
     #specifies where find_pin is allow to start. 
     before_action :find_pin, only: [:show, :edit, :update, :destroy] 
     
