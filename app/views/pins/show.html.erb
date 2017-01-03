@@ -1,6 +1,11 @@
 <h1><%= @pin.title %></h1>
 <p><%= @pin.description %></p>
-
+<!-- this 'if' block is only to prevent errors in development, no Pin should be without user in production -->
+<% if @pin.user_id.present? %>
+<p><strong>Submited by:</strong> <%= @pin.user.email %></p>
+<% else %>
+<p>No User Recorded</p>
+<%end%> <!--end if block -->
 <div>
     <%= link_to "Back", root_path, class:"btn btn-primary" %>
     <%= link_to "Edit", edit_pin_path, class:"btn btn-warning" %>

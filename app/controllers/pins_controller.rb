@@ -13,11 +13,15 @@ class PinsController < ApplicationController
     end
     
     def new
-        @pin = Pin.new
+        #@pin = Pin.new once user.id is required this code doesn't work anymore
+        #this method will record the user id in the Pins table
+        @pin = current_user.pins.build
     end
     
     def create
-        @pin= Pin.new(pin_params)
+        #once devise is install and a user ID must be put in the pin table this code doesn't work
+        #@pin= Pin.new(pin_params)
+        @pin = current_user.pins.build(pin_params)
         if @pin.save
             #flash messages for is in layouts/_messages.html.erb
             flash[:success] = "Pin was successfully created"
