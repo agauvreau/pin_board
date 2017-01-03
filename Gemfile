@@ -20,6 +20,8 @@ gem "paperclip", "~> 5.0.0"
 #this is a styling jquery gem you need to add the following line to application.js: //= require masonry/jquery.masonry under jquery ujs
 gem 'masonry-rails'
 # Use Uglifier as compressor for JavaScript assets
+#this allows voting for the pins
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

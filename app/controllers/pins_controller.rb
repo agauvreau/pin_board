@@ -1,7 +1,7 @@
 class PinsController < ApplicationController
     before_action :authenticate_user!
     #specifies where find_pin is allow to start. 
-    before_action :find_pin, only: [:show, :edit, :update, :destroy] 
+    before_action :find_pin, only: [:show, :edit, :update, :destroy, :upvote] 
     
     def index
         #displays all Pins in descending order of creation (newest first)
@@ -56,6 +56,11 @@ class PinsController < ApplicationController
             redirect_to edit_pin_path
         end
         
+    end
+    
+    def upvote
+		@pin.upvote_by current_user
+		redirect_to :back
     end
     
     

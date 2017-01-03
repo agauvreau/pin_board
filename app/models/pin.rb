@@ -1,4 +1,6 @@
 class Pin < ApplicationRecord
+    #this is for the votable gem
+    acts_as_votable
     #each pin can only have one user
     belongs_to :user
     #this is from the paperclip gem page, you can also put a default image , default_url: "/images/:style/missing.png"

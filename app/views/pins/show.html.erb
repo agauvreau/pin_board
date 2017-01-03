@@ -34,6 +34,10 @@
                         <div class="btn-group pull-right"> <!-- groups the button to the right for improved aesthetic -->
                             <%= link_to "Back", root_path, class:"btn btn-primary" %>
                             <% if user_signed_in? %> <!-- Only the pin's user can delete it -->
+                            <%= link_to like_pin_path(@pin), method: :put, class:"btn btn-default" do %>
+                                <span class="glyphicon glyphicon-heart"> </span>
+                                <%= @pin.get_upvotes.size %>
+                                <%end%>
                             <%= link_to "Edit", edit_pin_path, class:"btn btn-warning" %>
                             <!--The delete button is specific a bit here it sends the DELETE html method to the pin path -->
                             <%= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure" }, class:"btn btn-danger" %>
