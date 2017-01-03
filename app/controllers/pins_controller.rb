@@ -63,7 +63,7 @@ class PinsController < ApplicationController
     
     def pin_params
         #permits the pins components before their creation.
-        params.require(:pin).permit(:title, :description)
+        params.require(:pin).permit(:title, :description, :image)
     end
     
     private

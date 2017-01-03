@@ -1,14 +1,27 @@
-<h1><%= @pin.title %></h1>
-<p><%= @pin.description %></p>
-<!-- this 'if' block is only to prevent errors in development, no Pin should be without user in production -->
-<% if @pin.user_id.present? %>
-<p><strong>Submited by:</strong> <%= @pin.user.email %></p>
-<% else %>
-<p>No User Recorded</p>
-<%end%> <!--end if block -->
-<div>
-    <%= link_to "Back", root_path, class:"btn btn-primary" %>
-    <%= link_to "Edit", edit_pin_path, class:"btn btn-warning" %>
-    <!--The delete button is specific a bit here it sends the DELETE html method to the pin path -->
-    <%= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure" }, class:"btn btn-danger" %>
+
+<div class="col-md-6 col-md-offset-3">    
+    <div class="panel panel-default">
+        <div class="well">
+            <h1><%= @pin.title %></h1>
+        </div>
+        <p class="text-center"><strong><%= @pin.description %></strong></p>
+        <!-- this 'if' block is to prevent errors in case the pin has no picture -->
+        <% if @pin.image.present? %>
+        <p class="text-center"><%= image_tag @pin.image.url(:medium) %></p>
+        <%else%>
+        <p>No picture for this pin.</p>
+        <%end%>
+        <!-- this 'if' block is only to prevent errors in development, no Pin should be without user in production -->
+        <% if @pin.user_id.present? %>
+        <p class="text-center"><strong>Submited by:</strong> <%= @pin.user.email %></p>
+        <% else %>
+        <p class="text-center">No User Recorded</p>
+        <%end%> <!--end if block -->
+        <div class="text-center">
+            <%= link_to "Back", root_path, class:"btn btn-primary" %>
+            <%= link_to "Edit", edit_pin_path, class:"btn btn-warning" %>
+            <!--The delete button is specific a bit here it sends the DELETE html method to the pin path -->
+            <%= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure" }, class:"btn btn-danger" %>
+        </div>
+    </div>
 </div>

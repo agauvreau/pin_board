@@ -14,7 +14,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
 #for user creation and authentication
 gem 'devise'
-
+#to have pictures in the pins. This required imagemagick to be installed
+#to do it in cloud 9 = sudo apt-get update then sudo apt-get install imagemagick.
+gem "paperclip", "~> 5.0.0"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

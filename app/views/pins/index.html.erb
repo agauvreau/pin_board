@@ -3,7 +3,11 @@
 <div class="panel panel-default"> <!-- Pins do block -->
     <% @pins.each do |pin| %>
     <li class="list-group-item"> <!-- Listing li block -->
-        <div class"well"> <!-- Pin title and link div block -->
+        <div class="well"> <!-- Pin title and image and link div block -->
+            <%if pin.image.present? %>
+            <%= image_tag pin.image.url(:medium) %>
+            <%else%>
+            <%end%>
             <%= link_to pin.title, pin, class:"btn btn-primary" %>
         </div><!-- Pin title and link div block -->    
     </li><!-- Listing li block -->
